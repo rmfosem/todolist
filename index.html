@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TO DO LIST</title>
+</head>
+<body>
+    <div id="parent">
+        <h1>TO DO</h1>
+        <div>
+            <form action="">
+                <div id="input">
+                    <input type="text" id="subject" placeholder="할 일을 입력하세요">
+                    <button onclick="newRegister(); return false">입력</button>
+                </div>    
+            </form>
+
+            <div id="listContainer">
+                <ul id="list" onclick="delRegister();">
+                    <li>아침 스트레칭</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <script> 
+// 리스트 스타일을 랜덤 이미지로 설정
+        const images = [
+            'image/goldkiwi.png',
+            'image/grape.png',
+            'image/grapefruit.png',
+            'image/greenkiwi.png',
+            'image/lemon.png',
+            'image/shine.png',
+            'image/strawberry.png',
+            'image/tangerine.png',
+            'image/tomato.png'
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // 리스트 항목을 가져오기
+        const listItems = document.querySelectorAll('#list li');
+        const numItems = listItems.length;
+
+        // 이미지를 필요한 만큼만 사용하기
+        const imagesToUse = [...images]; // 복사본 생성
+        shuffleArray(imagesToUse); // 이미지를 무작위로 섞기
+
+        // 이미지 배열을 반복하여 항목에 배정하기
+        listItems.forEach((item, index) => {
+            // 배열이 부족할 경우 반복
+            const imageIndex = index % imagesToUse.length;
+            item.style.backgroundImage = `url(${imagesToUse[imageIndex]})`;
+        });
+
+
+//노드 추가
+        function newRegister() {
+            var newLi = document.createElement('li');
+            var subject = document.querySelector('#subject');
+            var txtNode = document.createTextNode(subject.value);
+
+            newLi.appendChild(txtNode);
+            document.getElementById('list').appendChild(newLi);
+
+            subject.value = '';
+
+            //리스트 스타일 적용
+            // 리스트 항목을 가져오기
+            const listItems = document.querySelectorAll('#list li');
+            const numItems = listItems.length;
+
+            // 이미지를 필요한 만큼만 사용하기
+            const imagesToUse = [...images]; // 복사본 생성
+            shuffleArray(imagesToUse); // 이미지를 무작위로 섞기
+
+            // 이미지 배열을 반복하여 항목에 배정하기
+            listItems.forEach((item, index) => {
+                // 배열이 부족할 경우 반복
+                const imageIndex = index % imagesToUse.length;
+                item.style.backgroundImage = `url(${imagesToUse[imageIndex]})`;
+            });
+            
+        }
+
+        function delRegister() {
+            document.getElementById("list").addEventListener("click", function(event) {
+                if (event.target.tagName === "LI") {
+                    event.target.remove();
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
+
+
+<!-- 추가할 기능 및 수정할 사항
+
+수정 - (css)항목 없어지면 입력창 중앙 정렬 안 됨
+수정 - (css)항목 많아지면 제목/입력창과 겹쳐짐
+추가 - 모두 삭제 버튼 
+수정 - (js)새로운 항목 입력 전에는 기본으로 있는 항목 삭제 안 됨
+    ➡️ 삭제는 되는데 두 번 클릭해야함(어떤 조건에서 이런지 잘 모르겠음)
+
+-->

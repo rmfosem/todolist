@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'LeeSeoyun';
+    font-size: 30px;
+    background-color: rgb(254, 250, 243);
+    margin:0;
+}
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#input, h1, #listContainer{
+    display: flex;
+    justify-content: center;
+    margin:0;
+}
+
+#input {
+    margin: 30px;
+}
+input {
+    font-family: 'S-CoreDream-3Light';
+    font-size: large;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border: solid 3px orange;
+    /* 입력할 때도 색 유지 */
+    outline: none;
+
+    padding: 10px;
+    padding-left:15px;
+}
+button {
+    font-family: 'S-CoreDream-3Light';
+    font-size: large;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: white;
+    background-color: orange;
+    border: none;
+
+    padding-right:15px;
+}
+
+h1{
+    color: white;
+    background-color: orange;
+    padding:10px;
+}
+
+ul {
+    list-style: none;
+    padding: 20px;
+    padding-top:0;
+    margin: 0;
+}
+
+li {
+    line-height: 160%;
+
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 35px;
+}
