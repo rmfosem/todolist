@@ -50,6 +50,24 @@ button {
 
     padding-right:15px;
 }
+button:hover {
+    cursor: pointer;
+}
+
+#delAll {
+    border-radius: 50px;
+    background-color: rgb(251, 245, 234);
+    color:rgb(230, 158, 24);
+    font-size: 20px;
+    padding:5px 10px;
+    margin: 20px;
+}
+footer {
+    /* 위치 고정 */
+    position: fixed;
+    bottom:0;
+    height: 5rem;
+}
 
 h1{
     color: white;
@@ -71,4 +89,7 @@ li {
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 35px;
+}
+#list li:hover {
+    cursor: pointer;
 }
