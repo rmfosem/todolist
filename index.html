@@ -7,23 +7,25 @@
     <title>TO DO LIST</title>
 </head>
 <body>
-    <div id="parent">
-        <h1>TO DO</h1>
-        <div>
-            <form action="">
-                <div id="input">
-                    <input type="text" id="subject" placeholder="할 일을 입력하세요">
-                    <button onclick="newRegister(); return false">입력</button>
-                </div>    
-            </form>
+    <h1>TO DO</h1>
+    <div>
+        <form action="">
+            <div id="input">
+                <input type="text" id="subject" placeholder="할 일을 입력하세요">
+                <button onclick="newRegister(); return false">입력</button>
+            </div> 
+        </form>
 
-            <div id="listContainer">
-                <ul id="list" onclick="delRegister();">
-                    <li>아침 스트레칭</li>
-                </ul>
-            </div>
+        <div id="listContainer">
+            <ul id="list" onclick="delRegister();">
+                <li>아침 스트레칭</li>
+            </ul>
         </div>
     </div>
+    <footer>
+        <button id="delAll" onclick="delAllRegister(); return false">할 일 모두 삭제하기</button>
+    </footer>
+   
 
 
     <script> 
@@ -63,7 +65,7 @@
         });
 
 
-//노드 추가
+//노드 추가 함수
         function newRegister() {
             var newLi = document.createElement('li');
             var subject = document.querySelector('#subject');
@@ -92,25 +94,21 @@
             
         }
 
+//노드 삭제 함수 (GPT)
         function delRegister() {
-            document.getElementById("list").addEventListener("click", function(event) {
-                if (event.target.tagName === "LI") {
+            document.getElementById("list").addEventListener("click", function(event) {     //event는 함수를 실행시킨 이벤트 그 자체
+                if (event.target.tagName === "LI") {        //target은 이벤트가 발생한 요소(li), tagName은 대문자 문자열을 반환
                     event.target.remove();
                 }
             });
         }
 
+//모두 삭제 함수
+        function delAllRegister() {
+            const ulNode = document.querySelector("#list");     //부모노드
+            ulNode.replaceChildren();       //replaceChildren은 파라미터로 아무것도 전달되지 않으면, 모든 자식 노드가 삭제됨.
+        }
+
     </script>
 </body>
 </html>
-
-
-<!-- 추가할 기능 및 수정할 사항
-
-수정 - (css)항목 없어지면 입력창 중앙 정렬 안 됨
-수정 - (css)항목 많아지면 제목/입력창과 겹쳐짐
-추가 - 모두 삭제 버튼 
-수정 - (js)새로운 항목 입력 전에는 기본으로 있는 항목 삭제 안 됨
-    ➡️ 삭제는 되는데 두 번 클릭해야함(어떤 조건에서 이런지 잘 모르겠음)
-
--->
